@@ -1,5 +1,6 @@
 import unittest
 from block_markdown import (
+    extract_title,
     markdown_to_html_node,
     markdown_to_blocks,
     block_to_block_type,
@@ -212,3 +213,35 @@ multiline also
         output_1 = ParentNode("div", children_1, None)
 
         self.assertEqual(output_1, markdown_to_html_node(markdown_input_1))
+
+    def test_extract_title(self):
+        inputs = [
+            ("""# Hello""", True),
+            ("""## this is invalid""", False),
+            (""" # this should be valid""", True),
+            ("""#iknow this is not valid""", False),
+            ("""# this should work                       """, True),
+            (
+                """                                # this should work also                        """,
+                True,
+            ),
+            ("""\n\n\n\n\n\n\n # Here is a big title \n\n\n\n\n\n\n\n""", True),
+            ("""intentional no title here \n# but there is a title here""", False),
+        ]
+
+        outputs = [
+            "Hello",
+            None,
+            "this should be valid",
+            None,
+            "this should work",
+            "this should work also",
+            "Here is a big title",
+            None,
+        ]
+
+        for index in range(len(inputs)):
+            if inputs[index][1] is True:
+                self.assertEqual(extract_title(inputs[index][0]), outputs[index])
+            else:
+                self.assertRaises(Exception, extract_title, inputs[index])
