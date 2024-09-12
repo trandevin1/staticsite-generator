@@ -196,3 +196,13 @@ def text_to_children(text):
     children = list(map(lambda textnode: text_node_to_html_node(textnode), nodes))
 
     return children
+
+
+def extract_title(markdown):
+    markdown = markdown.strip()
+
+    if not markdown.startswith("# "):
+        raise Exception("Missing Title or Heading 1")
+
+    title = markdown.split("\n", maxsplit=1)[0].split("# ")[-1].strip()
+    return title
