@@ -1,3 +1,2 @@
-python src/main.py 
-python src/htmlnode.py
-python src/textnode.py
+python src/main.py
+cd public && python3 -m http.server 8888
