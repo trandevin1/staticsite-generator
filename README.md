@@ -1,1 +1,1 @@
-# Simple static site generator from Markdown to HTML
+A simple static site generator from Markdown to HTML
