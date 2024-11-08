@@ -8,11 +8,6 @@
      https://github.com/trandevin1/staticsite-generator.git
      ```
 # How to Run in WSL or Linux
-
-  1. Run
-     
-    ```
-    path_to_project_folder/main.sh
-    ```
-  
-  
+  ```
+  path_to_project_folder/main.sh
+  ```
