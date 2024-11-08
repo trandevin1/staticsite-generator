@@ -10,8 +10,9 @@
 # How to Run in WSL or Linux
 
   1. Run
+     
     ```
     path_to_project_folder/main.sh
     ```
-
+  
   
